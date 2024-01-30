@@ -1,0 +1,30 @@
+services:
+  kubenews:
+    build:
+      context: .
+      dockerfile: .devcontainer/Dockerfile.dev
+    volumes:
+      - .:/app:cached
+  prometheus:
+    image: prom/prometheus:v2.49.1
+    volumes: 
+      - .docker/prometheus/prometheus.yaml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    depends_on:
+      - kubenews
+    networks:
+      - kubenews_net
+  grafana:
+    image: grafana/grafana:9.5.15
+    ports:
+      - "3000:3000"
+    volumes:
+      - ".docker/grafana/grafana.ini:/etc/grafana/grafana.ini"
+      - ".docker/grafana/provisioning/datasources/datasource.yaml:/etc/grafana/provisioning/datasources/datasource.yaml"
+      - ".docker/grafana/provisioning/dashboards/dashboards.yaml:/etc/grafana/provisioning/dashboards/dashboards.yaml"
+      - ".docker/grafana/dashboards:/var/lib/grafana/dashboards"
+    depends_on:
+      - prometheus
+    networks:
+      - kubenews_net
