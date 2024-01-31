@@ -2,15 +2,11 @@ name: tf-k8s
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ "main" ]
-    paths:
-      - 'terraform/**'
-  pull_request:
-    branches: [ "main" ]
+  schedule:
+    - cron: 0 0 * * *
 
 jobs:
-  CD:
+  destroy-aks:
     runs-on: ubuntu-latest
     env:
       ARM_CLIENT_ID: ${{ secrets.CLIENT_ID }} 
@@ -35,5 +31,5 @@ jobs:
       
     - name: Terraform Apply
       working-directory: ./terraform
-      run: terraform apply --auto-approve
+      run: terraform destroy --auto-approve
    
