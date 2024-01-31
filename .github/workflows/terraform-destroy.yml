@@ -1,4 +1,4 @@
-name: tf-k8s
+name: tf-k8s-destroy
 
 on:
   workflow_dispatch:
