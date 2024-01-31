@@ -16,16 +16,19 @@ jobs:
     steps:
     - name: Obtendo o código
       uses: actions/checkout@v3
+
     - uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
+
     - name: HashiCorp - Setup Terraform
       uses: hashicorp/setup-terraform@v2.0.3
+
     - name: Terraform Validate
-      uses: hashicorp/terraform-github-actions/validate@v0.3.7
+      working-directory: ./terraform
+      run: terraform validate
       
-    - name: Terraform Apply
-      uses: hashicorp/terraform-github-actions/apply@v0.4.0
-      env:
-        TF_ACTION_WORKING_DIR: 'terraform'
+    - name: Terraform Plan
+      working-directory: ./terraform
+      run: terraform plan --auto-approve
    
