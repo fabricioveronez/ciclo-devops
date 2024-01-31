@@ -1,0 +1,29 @@
+name: tf-k8s
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'terraform/**'
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  CD:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Obtendo o código
+      uses: actions/checkout@v3
+    - uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    - name: Terraform Validate
+      uses: hashicorp/terraform-github-actions/validate@v0.3.7
+      
+    - name: Terraform Apply
+      uses: hashicorp/terraform-github-actions/apply@v0.4.0
+      env:
+        TF_ACTION_WORKING_DIR: 'terraform'
+   
