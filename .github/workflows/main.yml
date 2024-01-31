@@ -6,6 +6,7 @@ on:
     branches: [ "main" ]
     paths:
       - 'src/**'
+      - 'k8s/**'
   pull_request:
     branches: [ "main" ]
 
