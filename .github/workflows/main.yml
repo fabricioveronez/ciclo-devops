@@ -15,6 +15,7 @@ jobs:
       packages: write
       id-token: write
       security-events: write
+      actions: read
 
     steps:
     - name: Obtendo o código
