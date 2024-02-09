@@ -25,7 +25,8 @@
 			"extensions": [
 				"ms-azuretools.vscode-docker",
 				"aquasecurityofficial.trivy-vulnerability-scanner",
-				"exiasr.hadolint"
+				"exiasr.hadolint",
+				"github.vscode-github-actions"
 			]
 		}
 	},
