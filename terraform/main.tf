@@ -32,7 +32,7 @@ resource "azurerm_kubernetes_cluster" "k8s_video" {
 
   default_node_pool {
     name                        = "default"
-    node_count                  = 3
+    node_count                  = 5
     vm_size                     = "Standard_D2_v2"
     temporary_name_for_rotation = "tmppool01"
   }
