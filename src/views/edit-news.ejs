@@ -15,7 +15,7 @@
     <main>
        <div class="post-form__container">
           <h3 class="post-form__title">Novo Post</h3>
-          <form action="#" class="post-form__form" action="/post" method="post">
+          <form action="#" class="post-form__form" action="/post" method="post" encType="multipart/form-data">
             <div class="post-form__group">
               <label for="" class="post-form__label">Título</label>
               <input type="text" class="post-form__input" id="title" name="title" placeholder="Escreva o título da notícia" value="<%= post.title %>">
@@ -33,6 +33,11 @@
                 Esse campo é obrigatório e deve ter no máximo 30 caracteres
               </div>
               <% } %>  
+            </div>
+            <!-- Campo de upload de imagem -->
+            <div class="post-form__group">
+              <label for="image" class="post-form__label">Imagem</label>
+              <input type="file" class="post-form__upload" id="sampleFile" name="sampleFile">
             </div>
             <div class="post-form__group">
               <label for="" class="post-form__label">Notícia</label>
