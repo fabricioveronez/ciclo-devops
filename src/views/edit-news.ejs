@@ -34,6 +34,11 @@
               </div>
               <% } %>  
             </div>
+            <!-- Campo de upload de imagem -->
+            <div class="post-form__group">
+              <label for="image" class="post-form__label">Imagem</label>
+              <input type="file" class="post-form__upload" id="image" name="image">
+            </div>
             <div class="post-form__group">
               <label for="" class="post-form__label">Notícia</label>
               <textarea class="post-form__textarea" id="description" name="description" cols="30" rows="10" placeholder="Escreva a sua notícia..."><%= post.content %></textarea>
