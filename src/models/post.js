@@ -36,6 +36,10 @@ Post.init({
     type: sequelize.DataTypes.STRING(2000),
     require: true
   },
+  image: {
+    type: sequelize.DataTypes.STRING,
+    require: true
+  },
 }, {
   sequelize: seque, // We need to pass the connection instance
   modelName: 'Post' // We need to choose the model name
