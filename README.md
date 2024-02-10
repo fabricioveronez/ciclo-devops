@@ -13,3 +13,11 @@ DB_USERNAME => Usuário do banco de dados.
 DB_PASSWORD => Senha do usuário do banco de dados.
 
 DB_HOST => Endereço do banco de dados.
+
+### Comando pra criar o storage do Terraform
+
+```
+az group create --name tf-live-storage --location "East US 2"
+
+az storage account create --name tflivestorage --resource-group tf-live-storage --location "East US 2" --sku Standard_ZRS
+```
