@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Print github context
         env:
-          CONTEXT: ${{ github }}
+          CONTEXT: ${{ toJson(github) }}
         run: echo "$CONTEXT"
 
 
