@@ -1,4 +1,4 @@
-name: CI-CD
+name: Install
 
 on:
   workflow_dispatch:
@@ -7,9 +7,13 @@ jobs:
   install:
     runs-on: ubuntu-latest
     steps:
+    - name: Instalação do ffmpeg
+      run: |
+        apt update --yes 
+        apt install ffmpeg --yes
     - name: Execução do ffmpeg
       run: |
-        ffmpeg
+        ffmpeg --help
 
 
 
