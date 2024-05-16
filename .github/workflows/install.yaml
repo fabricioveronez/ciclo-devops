@@ -7,13 +7,10 @@ jobs:
   install:
     runs-on: ubuntu-latest
     steps:
-    - name: Instalação do ffmpeg
-      run: |
-        sudo apt update --yes 
-        sudo apt install ffmpeg --yes
-    - name: Execução do ffmpeg
-      run: |
-        ffmpeg --help
+      - name: Print github context
+        env:
+          CONTEXT: ${{ github }}
+        run: echo "$CONTEXT"
 
 
 
