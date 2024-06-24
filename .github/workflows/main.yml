@@ -7,6 +7,7 @@ on:
     paths:
       - 'src/**'
       - 'k8s/**'
+      - '.github/workflows/main.yml'
       
 jobs:
   CI:
@@ -61,13 +62,13 @@ jobs:
     steps:
     - name: Obtendo o código
       uses: actions/checkout@v3
-    - uses: azure/login@v1
+
+    - name: Configurando o Kubectl
+      uses: azure/k8s-set-context@v4
       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-    - uses: azure/aks-set-context@v3
-      with:
-          resource-group: aula-rg
-          cluster-name: aula-aks
+         method: kubeconfig
+         kubeconfig: ${{ secrets.K8S_CONFIG }}
+         
     - name: Deploy to Kubernetes cluster
       uses: Azure/k8s-deploy@v4.9
       with:
